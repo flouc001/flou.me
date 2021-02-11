@@ -7,7 +7,14 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Open Sans', ...defaultTheme.fontFamily.sans],
+        sans: ['Poppins', 'Open Sans', ...defaultTheme.fontFamily.sans],
+      },
+      colors: {
+        navyblue: {
+          light: '#273B60',
+          DEFAULT: '#142646',
+          dark: '#020A1A',
+        },
       },
     },
   },
