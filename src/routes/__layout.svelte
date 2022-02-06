@@ -4,4 +4,6 @@
 </script>
 
 <Navbar />
-<slot></slot>
+<div class="flex justify-center pt-2">
+  <slot></slot>
+</div>
