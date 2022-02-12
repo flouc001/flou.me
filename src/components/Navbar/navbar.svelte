@@ -8,14 +8,11 @@
     path: '/'
   };
 
-  const rightLinks: NavLink[] = [
-    { label: 'posts', path: '/posts' },
-    { label: 'about', path: '/about' }
-  ];
+  const rightLinks: NavLink[] = [{ label: 'about', path: '/about' }];
 </script>
 
-<nav class="bg-blue-900">
-  <div class="flex justify-between items-center h-16 px-4">
+<nav class="bg-white">
+  <div class="flex justify-between items-center py-6">
     <Link link={homeLink} />
     <div class="flex space-x-2">
       {#each rightLinks as link}

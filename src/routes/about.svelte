@@ -1,10 +1,8 @@
 <script lang="ts" context="module">
   import type { Load } from '@sveltejs/kit';
 
-  import type { HomepageBody } from '$types/endpoints/homepage';
-
   export const load: Load = async ({ fetch }) => {
-    const response = await fetch('/homepage');
+    const response = await fetch('/aboutPage');
 
     return {
       status: response.status,
@@ -16,7 +14,9 @@
 </script>
 
 <script lang="ts">
-  export let content: HomepageBody;
+  import type { AboutBody } from '$types/endpoints/about';
+
+  export let content: AboutBody;
 </script>
 
-<div class="text-sm">{content.intro}</div>
+<div class="text-sm">{@html content.main}</div>

@@ -24,7 +24,10 @@
     "checkJs": true,
     "paths": {
       "$lib": ["src/lib"],
-      "$lib/*": ["src/lib/*"]
+      "$lib/*": ["src/lib/*"],
+      "$types/*": ["src/types/*"],
+      "$graphql/*": ["src/graphql/*"],
+      "$components/*": ["src/components/*"]
     }
   },
   "include": ["src/**/*.d.ts", "src/**/*.js", "src/**/*.ts", "src/**/*.svelte", "environment.d.ts"]

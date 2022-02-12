@@ -1,3 +1,4 @@
+import path from 'path';
 import adapter from '@sveltejs/adapter-auto';
 import preprocess from 'svelte-preprocess';
 
@@ -9,7 +10,16 @@ const config = {
 
   kit: {
     adapter: adapter(),
-    trailingSlash: 'never'
+    trailingSlash: 'never',
+    vite: {
+      resolve: {
+        alias: {
+          $types: path.resolve('./src/types'),
+          $graphql: path.resolve('./src/graphql'),
+          $components: path.resolve('./src/components')
+        }
+      }
+    }
   }
 };
 

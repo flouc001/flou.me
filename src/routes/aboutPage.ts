@@ -1,13 +1,13 @@
 // Not using a shadow endpoint on index as this problem exists: https://github.com/sveltejs/kit/issues/3718
 import type { RequestHandler } from '@sveltejs/kit';
-import type { HomepageBody } from '$types/endpoints/homepage';
-import type { GetHomepageQuery } from '$types/graphql';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 
 import { runQuery } from '$lib/contentful';
-import { getHomepageQueryDocument } from '$graphql/getHomepage';
+import { getAboutQueryDocument } from '$graphql/getAbout';
+import type { GetAboutQuery } from '$types/graphql';
 
 export const get: RequestHandler = async () => {
-  const response = await runQuery<GetHomepageQuery>(getHomepageQueryDocument);
+  const response = await runQuery<GetAboutQuery>(getAboutQueryDocument);
 
   if ('errors' in response) {
     return {
@@ -18,14 +18,16 @@ export const get: RequestHandler = async () => {
 
   const {
     data: {
-      homepageCollection: { items }
+      aboutCollection: { items }
     }
   } = response;
 
   const [latestUpdate] = items;
 
-  const body: HomepageBody = {
-    intro: latestUpdate.intro
+  const renderedContent = documentToHtmlString(latestUpdate.main.json);
+
+  const body = {
+    main: renderedContent
   };
 
   return {
