@@ -1,12 +1,12 @@
 <script context="module">
   /** @type {import('@sveltejs/kit').ErrorLoad} */
-  export function load({error, status}) {
+  export function load({ error, status }) {
     return {
       props: {
         status,
-        message: error.message,
+        message: error.message
       }
-    }
+    };
   }
 </script>
 

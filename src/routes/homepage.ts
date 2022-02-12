@@ -15,37 +15,37 @@ const query = `
 `;
 
 type ResponseBody = {
-	homepageCollection: {
-		items: Array<{
-			intro: string;
-		}>;
-	};
+  homepageCollection: {
+    items: Array<{
+      intro: string;
+    }>;
+  };
 };
 
 export const get: RequestHandler = async () => {
-	const response = await runQuery<ResponseBody>(query);
+  const response = await runQuery<ResponseBody>(query);
 
-	if ('errors' in response) {
-		return {
-			status: 400,
-			body: {}
-		};
-	}
+  if ('errors' in response) {
+    return {
+      status: 400,
+      body: {}
+    };
+  }
 
-	const {
-		data: {
-			homepageCollection: { items }
-		}
-	} = response;
+  const {
+    data: {
+      homepageCollection: { items }
+    }
+  } = response;
 
-	const [latestUpdate] = items;
+  const [latestUpdate] = items;
 
-	const body: HomepageBody = {
-		intro: latestUpdate.intro
-	};
+  const body: HomepageBody = {
+    intro: latestUpdate.intro
+  };
 
-	return {
-		status: 200,
-		body
-	};
+  return {
+    status: 200,
+    body
+  };
 };
