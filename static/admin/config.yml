@@ -2,6 +2,13 @@ backend:
   name: github
   repo: flouc001/flou.me
   branch: main
+  commit_messages:
+    create: 'feat: added post {{slug}} to {{collection}}'
+    update: 'refactor: updated post {{slug}} in {{collection}}'
+    delete: 'refactor: removed post {{slug}} from {{collection}}'
+    uploadMedia: 'feat: added media asset {{path}}'
+    deleteMedia: 'refactor: removed media asset {{path}}'
+    openAuthoring: '{{message}}'
 
 media_folder: static/assets
 public_folder: /assets
