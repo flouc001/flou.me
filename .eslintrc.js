@@ -20,5 +20,18 @@ module.exports = {
         extensions: ['.jsx', '.tsx'],
       },
     ],
+    'import/prefer-default-export': 'off',
+    'react/function-component-definition': [
+      2,
+      { namedComponents: 'arrow-function' },
+    ],
+    'import/extensions': [1, 'never'],
+  },
+  settings: {
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
   },
 };
