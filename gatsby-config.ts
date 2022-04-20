@@ -10,6 +10,7 @@ const config: GatsbyConfig = {
     siteUrl: 'https://www.flou.me',
   },
   plugins: [
+    'gatsby-plugin-postcss',
     {
       resolve: 'gatsby-source-prismic',
       options: {
