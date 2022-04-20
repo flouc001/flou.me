@@ -1,12 +1,24 @@
 import type { GatsbyConfig } from 'gatsby';
 
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 const config: GatsbyConfig = {
   siteMetadata: {
     title: 'flou.me',
     siteUrl: 'https://www.flou.me',
   },
   plugins: [
-    'gatsby-plugin-netlify-cms',
+    {
+      resolve: 'gatsby-source-prismic',
+      options: {
+        repositoryName: process.env.GATSBY_PRISMIC_REPO_NAME,
+        customTypesApiToken: process.env.PRISMIC_CUSTOM_TYPES_API_TOKEN,
+        // TODO: write a link resolver
+        linkResolver: () => '/',
+      },
+    },
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
@@ -22,7 +34,6 @@ const config: GatsbyConfig = {
         icon: 'src/images/icon.png',
       },
     },
-    'gatsby-plugin-mdx',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
